@@ -1,8 +1,20 @@
 # Spotify Playlist Enhancer
 
 > **Status** ⚙️ *LLM‑driven spec ­– code not yet generated*
-> **Stack** Python 3 · Spotipy · Streamlit ( optional CLI ) · Docker ( optional )
+> **Stack** Python 3 · Spotipy
 
+Key Features
+	1.	Playlist & Library Browser – Lists every playlist and your entire “Liked Songs” for one-click selection.
+	2.	Audio Analysis – Pulls BPM, energy, danceability, valence and key for each track via Spotify’s audio-features API.
+	3.	Tempo Buckets – Auto-groups tracks into Slow (<90 BPM), Medium (90-140 BPM) and Fast (>140 BPM) playlists.
+	4.	Energy Buckets – Optional low / mid / high energy splits using Spotify’s energy score.
+	5.	Auto-Create Playlists – Builds new private playlists named Auto:<Bucket> and fills them in batches of 100 tracks.
+	6.	In-Place Shuffle – Randomizes the order of any selected playlist and writes it back to Spotify.
+	7.	AI Recommendations – Adds up to N similar tracks (seeded by the playlist) after you preview and approve them.
+	8.	Stats Dashboard – Displays average BPM, energy, and key distribution for any analyzed set.
+	9.	JSON Export – One-click download of the full analysis and bucket assignments.
+	10.	Dual Interface – Command-line script for power users and a Streamlit web UI with check-boxes and progress bars.
+ 
 ---
 
 ## 1  Project Goal

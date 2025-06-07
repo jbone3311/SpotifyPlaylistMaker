@@ -1,6 +1,6 @@
 # Spotify Playlist Enhancer
 
-> **Status** ⚙️ *LLM‑driven spec ­– code not yet generated*
+> **Status** ⚙️ Playlist Browser implemented
 > **Stack** Python 3 · Spotipy
 
 Key Features
@@ -27,7 +27,7 @@ A tool that super‑charges any Spotify library **without leaving Spotify**. All
 
 |  #    |  Feature                        |  API Endpoints                                                    |  UI Exposure                   |  Description                                                                                           |
 | ----- | ------------------------------- | ----------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
-|  F‑1  |  **Playlist Browser**           |  `GET /v1/me/playlists`                                           |  Dropdown / CLI list           | Fetch & paginate all playlists.                                                                        |
+|  F‑1 ✅ |  **Playlist Browser**           |  `GET /v1/me/playlists`                                           |  Dropdown / CLI list           | Fetch & paginate all playlists.                                                                        |
 |  F‑2  |  **Liked‑Songs Loader**         |  `GET /v1/me/tracks`                                              |  Button: *Analyze Liked Songs* | Pull entire Saved Library (50‑track paging).                                                           |
 |  F‑3  |  **Track Analyzer**             |  `GET /v1/audio-features`                                         |  Background                    | Batch‑fetch BPM, energy, danceability, valence, key.                                                   |
 |  F‑4  |  **Tempo Bucketer**             |  —                                                                |  Automatic                     | Classify tracks: *Slow* <90 BPM, *Medium* 90‑140, *Fast* >140.                                         |
@@ -85,8 +85,8 @@ docker-compose.yml (optional)
 
 |  ID   |  Module · Function           |  Done when …                                               |
 | ----- | ---------------------------- | ---------------------------------------------------------- |
-|  T‑01 |  `init_spotify_client()`     | Auth succeeds, token refreshes, scopes correct.            |
-|  T‑02 |  `fetch_user_playlists()`    | Returns `[{id,name,track_total}]`. Handles paging.         |
+|  T‑01 |  `init_spotify_client()` ✅     | Auth succeeds, token refreshes, scopes correct.            |
+|  T‑02 |  `fetch_user_playlists()` ✅    | Returns `[{id,name,track_total}]`. Handles paging.         |
 |  T‑03 |  `fetch_liked_tracks()`      | Returns all Saved track URIs.                              |
 |  T‑04 |  `get_playlist_track_uris()` | Returns full URI list for given playlist.                  |
 |  T‑05 |  `fetch_audio_features()`    | Batch size ≤100; skips `None`.                             |

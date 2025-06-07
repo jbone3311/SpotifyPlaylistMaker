@@ -74,3 +74,38 @@ def fetch_user_playlists(sp: spotipy.Spotify) -> List[Dict[str, object]]:
             break
     logger.info("Total playlists fetched: %d", len(playlists))
     return playlists
+
+
+
+def fetch_liked_tracks(sp: spotipy.Spotify) -> List[str]:
+    """Retrieve URIs for all tracks saved in the user's library.
+
+    Parameters
+    ----------
+    sp:
+        Authenticated Spotipy client.
+
+    Returns
+    -------
+    list[str]
+        List of track URIs representing the user's liked songs.
+    """
+    uris: List[str] = []
+    offset = 0
+    while True:
+        response = sp.current_user_saved_tracks(limit=50, offset=offset)
+        logger.debug(
+            "Fetched %d liked tracks at offset %d",
+            len(response.get("items", [])),
+            offset,
+        )
+        for item in response.get("items", []):
+            track = item.get("track")
+            if track and track.get("uri"):
+                uris.append(track["uri"])
+        if response.get("next"):
+            offset += len(response.get("items", []))
+        else:
+            break
+    logger.info("Total liked tracks fetched: %d", len(uris))
+    return uris
